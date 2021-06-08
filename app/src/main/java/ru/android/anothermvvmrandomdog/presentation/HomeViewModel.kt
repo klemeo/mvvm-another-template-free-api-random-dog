@@ -1,7 +1,7 @@
 package ru.android.anothermvvmrandomdog.presentation
 
+import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import ru.android.anothermvvmrandomdog.base.ResultObserverDelegate
@@ -12,10 +12,7 @@ class HomeViewModel(
     private val dogInteractor: DogInteractor
 ) : ViewModel() {
 
-    private val _dogLiveData: MutableLiveData<Dog> =
-        MutableLiveData()
-    val dogLiveData: LiveData<Dog>
-        get() = _dogLiveData
+    val imageDog = ObservableField<String>()
 
     private var getDogObserver = Observer<Result<Dog>> { result ->
         handleDogResult(result)
@@ -31,12 +28,16 @@ class HomeViewModel(
     private fun handleDogResult(result: Result<Dog>) {
         result
             .onSuccess {
-                _dogLiveData.postValue(it)
+                setImage(it)
 
             }
             .onFailure {
 
             }
+    }
+
+    private fun setImage(data: Dog) {
+        imageDog.set(data.message)
     }
 
 }
