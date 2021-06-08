@@ -27,9 +27,9 @@
 
                 <ImageView
                     android:id="@+id/imageView"
-                    app:imageUrl="@{viewModel.imageDog}"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    app:imageUrl="@{viewModel.imageDog}" />
 
                 <ProgressBar
                     android:id="@+id/pbPost"
@@ -52,6 +52,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="16dp"
                 android:background="#8BC34A"
+                android:onClick="@{() -> viewModel.getDog()}"
                 android:text="Next" />
 
         </LinearLayout>

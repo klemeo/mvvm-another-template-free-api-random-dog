@@ -36,12 +36,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-        viewModel.getDog()
     }
 
     private fun initView() {
 
-        buttonNext.setOnClickListener { viewModel.getDog() }
+        viewModel.getDog()
 
     }
 
